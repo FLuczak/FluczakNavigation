@@ -2,10 +2,8 @@
 
 #include "MathUtilities.hpp"
 
-fluczak::Ai::NavMeshPath::NavMeshPath(std::vector<std::reference_wrapper<const Ai::Node>>& nodesToSet)
+fluczak::Ai::NavMeshPath::NavMeshPath(const std::vector<std::reference_wrapper<const Ai::Node>>& nodesToSet)
 {
-    aiNodes.empty();
-
     for (auto node : nodesToSet)
     {
         points.push_back(node.get().position);
@@ -33,11 +31,11 @@ float fluczak::Ai::NavMeshPath::GetPercentageAlongPath(const VectorMath::SimpleV
         accumulatedLengths[i + 1] = accumulatedLengths[i] + segmentLength;
     }
 
-    int segmentIndex = 0;
+    size_t segmentIndex = 0;
     float closestDistance = std::numeric_limits<float>::max();
 
     //find the closest point to the given point
-    for (int i = 0; i < points.size() - 1; i++)
+    for (size_t i = 0; i < points.size() - 1; i++)
     {
         auto closestPoint = VectorMath::Utils::GetNearestPointOnLineSegment(point, points[i + 1], points[i]);
         const float distance = VectorMath::SimpleVector2D<float>::Length(point- closestPoint);
@@ -58,7 +56,7 @@ float fluczak::Ai::NavMeshPath::GetPercentageAlongPath(const VectorMath::SimpleV
     return totalT;
 }
 
-fluczak::VectorMath::SimpleVector2D<float> fluczak::Ai::NavMeshPath::GetClosestPointOnPath(VectorMath::SimpleVector2D<float> point) const
+fluczak::VectorMath::SimpleVector2D<float> fluczak::Ai::NavMeshPath::GetClosestPointOnPath(const VectorMath::SimpleVector2D<float>& point) const
 {
     if (points.size() <= 1) return {};
     std::vector<VectorMath::SimpleVector2D<float>> closestPoints = {};
@@ -91,7 +89,7 @@ fluczak::VectorMath::SimpleVector2D<float> fluczak::Ai::NavMeshPath::FindPointOn
     float totalLength = 0.0f;
     std::vector<float> segmentLengths;
 
-    for (int i = 0; i < points.size() - 1; i++)
+    for (size_t i = 0; i < points.size() - 1; i++)
     {
         float segmentLength = VectorMath::SimpleVector2D<float>::Length(points[i]- points[i + 1]);
         totalLength += segmentLength;

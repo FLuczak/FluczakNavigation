@@ -16,16 +16,14 @@ namespace fluczak::VectorMath
 
 		SimpleVector2D operator*(T other)const;
 
-		SimpleVector2D operator-(SimpleVector2D& other);
-
-		SimpleVector2D operator-(const SimpleVector2D& other)const;
+		SimpleVector2D operator-(const SimpleVector2D& other) const;
 
 		SimpleVector2D operator+(const SimpleVector2D& other) const
 		{
 			return { x + other.x,y + other.y };
 		}
 
-		SimpleVector2D operator/(T other);
+		SimpleVector2D operator/(T other) const;
 		bool operator!=(const SimpleVector2D& other) const;
 
 		static SimpleVector2D<float> Lerp(const SimpleVector2D<float>& a, const SimpleVector2D<float>& b, float t)
@@ -38,11 +36,8 @@ namespace fluczak::VectorMath
 		static T Length(const SimpleVector2D& vector);
 		static T Length2(const SimpleVector2D& vector);
 
-		bool operator==(SimpleVector2D& other);
-		bool operator==(const SimpleVector2D& other)const;
-		float Dot(const SimpleVector2D& other);
-
-		float Dot(SimpleVector2D& other);
+		bool operator==(const SimpleVector2D& other) const;
+		float Dot(const SimpleVector2D& other) const;
 		static float StaticDot(const SimpleVector2D& a, const SimpleVector2D& b);
 
 		SimpleVector2D Normalized();
@@ -88,17 +83,6 @@ namespace fluczak::VectorMath
 	}
 
 	template <class T>
-	SimpleVector2D<T> SimpleVector2D<T>::operator-(SimpleVector2D& other)
-	{
-		SimpleVector2D result{};
-
-		result.x = x - other.x;
-		result.y = y - other.y;
-
-		return  result;
-	}
-
-	template <class T>
 	SimpleVector2D<T> SimpleVector2D<T>::operator-(const SimpleVector2D& other) const
 	{
 		SimpleVector2D result{};
@@ -110,7 +94,7 @@ namespace fluczak::VectorMath
 	}
 
 	template <class T>
-	SimpleVector2D<T> SimpleVector2D<T>::operator/(T other)
+	SimpleVector2D<T> SimpleVector2D<T>::operator/(T other) const
 	{
 		SimpleVector2D result{};
 
@@ -145,25 +129,13 @@ namespace fluczak::VectorMath
 	}
 
 	template <class T>
-	bool SimpleVector2D<T>::operator==(SimpleVector2D& other)
-	{
-		return other.x == x && other.y == y;
-	}
-
-	template <class T>
 	bool SimpleVector2D<T>::operator==(const SimpleVector2D& other) const
 	{
 		return other.x == x && other.y == y;
 	}
 
 	template <class T>
-	float SimpleVector2D<T>::Dot(const SimpleVector2D& other)
-	{
-		return x * other.x +  y * other.y;
-	}
-
-	template <class T>
-	float SimpleVector2D<T>::Dot(SimpleVector2D& other)
+	float SimpleVector2D<T>::Dot(const SimpleVector2D& other) const
 	{
 		return x * other.x + y * other.y;
 	}

@@ -101,14 +101,14 @@ namespace fluczak::Ai
 		 */
     	void AddNodesAndEdges(const std::vector<Node>& nodesToAdd, const std::vector<EdgeData>& edgesToSet);
 
-        std::vector<Edge> GetAssociatedEdges(Node& node) const;
+        std::vector<Edge> GetAssociatedEdges(const Node& node) const;
 
     	const std::vector<Node>& GetNodes()const { return nodes; }
     private:
         std::vector<Node> nodes{};
         std::vector<Edge> edges{};
 
-        std::unordered_map<Node*, std::vector<int>> nodeEdgeAssociations;
+        std::unordered_map<const Node*, std::vector<int>> nodeEdgeAssociations;
     };
 
 }  // namespace Ai

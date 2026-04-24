@@ -64,5 +64,4 @@ namespace fluczak::Ai
 	        const std::unordered_map<const Ai::Node*, const Ai::Node*>&
 	        predecessors);
     };
-	};
-
+}

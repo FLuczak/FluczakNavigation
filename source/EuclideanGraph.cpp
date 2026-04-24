@@ -37,7 +37,7 @@ fluczak::Ai::EuclideanGraph::EuclideanGraph(const std::vector<VectorMath::Simple
 fluczak::Ai::EuclideanGraph::EuclideanGraph(const std::vector<Node>& nodesToSet, const std::vector<Edge>& edgesToSet)
 {
     int index = 0;
-    for (Node node : nodesToSet)
+    for (const Node& node : nodesToSet)
     {
         nodes.emplace_back(node);
         for (Edge const& edge : edgesToSet)
@@ -92,7 +92,7 @@ void fluczak::Ai::EuclideanGraph::AddNodesAndEdges(const   std::vector<Node>&nod
 	const std::vector<Edge>& edgesToSet)
 {
     int index = 0;
-    for (Node node : nodesToAdd)
+    for (const Node& node : nodesToAdd)
     {
         nodes.emplace_back(node);
         for (Edge const& edge : edgesToSet)
@@ -121,7 +121,7 @@ void fluczak::Ai::EuclideanGraph::AddNodesAndEdges(const std::vector<Node>& node
     }
 }
 
-std::vector<fluczak::Ai::Edge> fluczak::Ai::EuclideanGraph::GetAssociatedEdges( Node& node) const
+std::vector<fluczak::Ai::Edge> fluczak::Ai::EuclideanGraph::GetAssociatedEdges(const Node& node) const
 {
     std::vector<fluczak::Ai::Edge> toReturn{};
 

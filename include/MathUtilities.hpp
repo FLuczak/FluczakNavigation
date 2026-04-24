@@ -4,7 +4,7 @@
 
 namespace fluczak::VectorMath::Utils
 {
-    static inline bool DoSegmentsIntersect(SimpleVector2D<float> one, SimpleVector2D<float> two, SimpleVector2D<float> three, SimpleVector2D<float> four)
+    static inline bool DoSegmentsIntersect(const SimpleVector2D<float>& one, const SimpleVector2D<float>& two, const SimpleVector2D<float>& three, const SimpleVector2D<float>& four)
     {
         const double denominator = ((two.x - one.x) * (four.y - three.y)) - ((two.y - one.y) * (four.x - three.x));
         // Check for parallel lines
@@ -28,7 +28,7 @@ namespace fluczak::VectorMath::Utils
         return predicates::adaptive::orient2d(p, la, lb) > 0;
     }
 
-    static inline bool IsPointInsidePolygon(const SimpleVector2D<float>& point, SimplePolygon2D polygon)
+    static inline bool IsPointInsidePolygon(const SimpleVector2D<float>& point, const SimplePolygon2D& polygon)
     {
         // Adapted from: https://wrfranklin.org/Research/Short_Notes/pnpoly.html
 

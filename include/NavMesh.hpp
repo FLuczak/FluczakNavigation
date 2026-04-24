@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 #pragma warning(push)
 #pragma warning(disable : 4267)
@@ -43,7 +42,7 @@ namespace fluczak::Ai
         NavMesh(float agentRadiusToSet, const std::vector<fluczak::VectorMath::SimplePolygon2D>& floor, const std::vector<fluczak::VectorMath::SimplePolygon2D>& obstacles);
 
         //Getter function for the underlying graph
-        const Ai::EuclideanGraph& GetGraph() { return graph; }
+        const Ai::EuclideanGraph& GetGraph() const { return graph; }
         //Getter function for if the navmesh was baked properly.
         bool IsBaked() const { return isBaked; }
 
@@ -99,8 +98,9 @@ namespace fluczak::Ai
         // Find all portals along a path- used for he funnel algorithm
         std::vector<Portal> FindPortalsAlongPath(NavMeshPath& path) const;
         // Check if a point is on the left from a line
-        static bool IsLeft(fluczak::VectorMath::SimpleVector2D<float> startPoint, fluczak::VectorMath::SimpleVector2D<float> endPoint, fluczak::
-                           VectorMath::SimpleVector2D<float> point);
+        static bool IsLeft(fluczak::VectorMath::SimpleVector2D<float> startPoint,
+                           fluczak::VectorMath::SimpleVector2D<float> endPoint,
+                           fluczak::VectorMath::SimpleVector2D<float> point);
         // TRIANGULATION:
         // collective triangulation method that calls all the methods below
         void TriangulateMesh(std::vector<Clipper2Lib::PathsD>& paths);
